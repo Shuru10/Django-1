@@ -5,10 +5,15 @@ from datetime import datetime
 from django.http import HttpResponse
 from django.template import Template, Context, loader
 
+from inicio.models import Perro
+
 import random
 
 def inicio(request):
-    return HttpResponse("Bienvenidos a mi Inicio")
+    #v1
+    #return HttpResponse("Bienvenidos a mi Inicio")
+    return render(request, "inicio/index.html")
+    
 
 def template1(request, nombre, apellido, edad):
     fecha = datetime.now()
@@ -75,3 +80,8 @@ def probando(request):
     numeros = random.choices(lista, k=50)
     print(numeros)
     return render(request, "probando_if_for.html", {"numeros": numeros})
+
+def crear_perro(request, nombre, raza, edad):
+    perro = Perro(nombre=nombre, raza=raza, edad=edad)
+    perro.save()
+    return render(request, "perro_template/creacion.html", {"perro": perro})
