@@ -7,7 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Landing Page - Start Bootstrap Theme</title>
+        <title>
+            {% block title_head %}
+            Landing Page - Start Bootstrap Theme
+            {% endblock title_head %}
+        </title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -23,7 +27,9 @@
             <div class="container">
                 <a class="navbar-brand" href={% url "inicio" %}>inicio</a>
                 <a class="navbar-brand" href={% url "probando" %}>Probando</a>
-                <a class="navbar-brand" href={% url "crear_perro" "Ramoncito" "Pichicho" "1"%}>Creacion Perro</a>
+                {% comment %} <a class="navbar-brand" href={% url "crear_perro" "Ramoncito" "Pichicho" "1"%}>Creacion Perro</a> {% endcomment %}
+                <a class="navbar-brand" href={% url "ingresar_paciente" %}>Ingresar Paciente</a>
+                <a class="navbar-brand" href={% url "pacientes" %}>Pacientes</a>
                 {% comment %} <a class="btn btn-primary" href="#signup">Sign Up</a> {% endcomment %}
             </div>
         </nav>

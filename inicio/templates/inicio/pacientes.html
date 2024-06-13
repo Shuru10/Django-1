@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+Listado de Pacientes
+{% endblock title_head %}
+
+{% block h1_header %}
+Listado de Pacientes
+{% endblock h1_header %}
+
+
+{% block main %}
+
+{% if pacientes %}
+    <ul>
+        {% for paciente in pacientes %}
+        <li>{{paciente}}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+<p>No hay pacientes ingresados</p>
+{% endif %}
+
+{% endblock main %}

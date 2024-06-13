@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+Ingreso de Pacientes
+{% endblock title_head %}
+
+{% block h1_header %}
+Ingreso de Pacientes
+{% endblock h1_header %}
+
+
+{% block main %}
+
+<form action={% url "ingresar_paciente" %} method="POST">
+    {% csrf_token %}
+
+    {% comment %} <p>
+       Nombre: 
+       <input type="text" name="nombre">
+    </p>
+    <p>
+       Raza: 
+       <input type="text" name="raza">
+    </p>
+    <p>
+       Edad:
+       <input type="number" name="edad">
+    </p> {% endcomment %}
+
+    {{formulario}}
+
+    <input type="submit" value="Enviar">
+    {% comment "" %}<button>Enviar</button>{% endcomment %}
+
+</form>
+
+{% endblock main %}
