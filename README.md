@@ -1,6 +1,8 @@
 # README de mi proyecto
 
 
+Alumno:Joaquin Del Aguila
+
 3er Pre-entrega Curso Python CODERHOUSE
 
  #### Portal de Veterinaria Pepito Grillo ###
