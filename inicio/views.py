@@ -17,11 +17,11 @@ def inicio(request):
     return render(request, "inicio/index.html")
     
 
-def template1(request, nombre, apellido, edad):
+#def template1(request, nombre, apellido, edad):
     fecha = datetime.now()
     return HttpResponse(f"<h1>Mi Template 1</h1> -- Fecha:{fecha} -- Bienvenido {nombre} {apellido} {edad}")
 
-def template2(request, nombre, apellido, edad):
+#def template2(request, nombre, apellido, edad):
     
     archivo_abierto = open(r"C:\Users\joaco\Desktop\Python\Proyecto Django-1\templates\template2.html")
     
@@ -44,7 +44,7 @@ def template2(request, nombre, apellido, edad):
     return HttpResponse(template_renderizado)
 
 
-def template3(request, nombre, apellido, edad):
+#def template3(request, nombre, apellido, edad):
 
     template = loader.get_template("template3.html")
     
@@ -62,7 +62,7 @@ def template3(request, nombre, apellido, edad):
     return HttpResponse(template_renderizado)
 
 
-def template4(request, nombre, apellido, edad):
+#def template4(request, nombre, apellido, edad):
     
     fecha = datetime.now()
     
@@ -75,7 +75,7 @@ def template4(request, nombre, apellido, edad):
     
     return render(request, "template4.html", datos)
 
-def probando(request):
+#def probando(request):
     
     lista = list(range(500))
     
