@@ -26,7 +26,7 @@
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
                 <a class="navbar-brand" href={% url "inicio" %}>inicio</a>
-                <a class="navbar-brand" href={% url "probando" %}>Probando</a>
+                {% comment %}<a class="navbar-brand" href={% url "probando" %}>Probando</a>  {% endcomment %}
                 {% comment %} <a class="navbar-brand" href={% url "crear_perro" "Ramoncito" "Pichicho" "1"%}>Creacion Perro</a> {% endcomment %}
                 <a class="navbar-brand" href={% url "ingresar_paciente" %}>Ingresar Paciente</a>
                 <a class="navbar-brand" href={% url "pacientes" %}>Pacientes</a>
