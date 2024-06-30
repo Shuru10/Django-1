@@ -1,0 +1,18 @@
+
+{% extends "base.html" %}
+
+{% block title_head %}
+Paciente
+{% endblock title_head %}
+
+{% block h1_header %}
+{{perro}}
+{% endblock h1_header %}
+
+{% block main %}
+<ul>
+    <li>Nombre: {{perro.nombre}} </li>
+    <li>Raza: {{perro.raza}} </li>
+    <li>Edad: {{perro.edad}} </li>
+</ul>
+{% endblock main %}

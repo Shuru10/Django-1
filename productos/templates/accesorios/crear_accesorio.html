@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+Crear Accesorio
+{% endblock title_head %}
+
+{% block h1_header %}
+Crear Accesorio
+{% endblock h1_header %}
+
+
+{% block main %}
+
+<form action={% url "crear_accesorio" %} method="POST">
+    {% csrf_token %}
+
+    {{form}}
+
+    <input type="submit" value="Enviar">
+
+</form>
+
+{% endblock main %}

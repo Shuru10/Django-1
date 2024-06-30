@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+Accesorios
+{% endblock title_head %}
+
+{% block h1_header %}
+Listado de Accesorios
+{% endblock h1_header %}
+
+
+{% block main %}
+
+ <a href={% url "crear_accesorio" %}>Crear Accesorio</a>
+
+{% if accesorios %}
+    <ul>
+        {% for accesorio in accesorios %}
+        <li>{{accesorio}} | 
+            {% comment %} <a href={% url "eliminar_accesorio" accesorio.id%}>Eliminar</a> | 
+            <a href={% url "editar_accesorio" accesorio.id%}>Editar</a> |  {% endcomment %}
+            <a href={% url "ver_accesorio" accesorio.id%}>Ver</a> 
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+<p>No hay accesorios ingresados</p>
+{% endif %}
+
+{% endblock main %}

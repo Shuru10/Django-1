@@ -11,10 +11,21 @@ Listado de Pacientes
 
 {% block main %}
 
+<a href={% url "ingresar_paciente" %}>Ingresar Paciente</a>
+
+<form action={% url "pacientes" %} method="get">
+    {{formulario}}
+    <input type="submit" value="Buscar">
+</form>
+
 {% if pacientes %}
     <ul>
-        {% for paciente in pacientes %}
-        <li>{{paciente}}</li>
+        {% for perro in pacientes %}
+        <li>{{perro}} | 
+            <a href={% url "eliminar_paciente" perro.id%}>Eliminar</a> | 
+            <a href={% url "editar_paciente" perro.id%}>Editar</a> |
+            <a href={% url "ver_paciente" perro.id%}>Ver</a> 
+        </li>
         {% endfor %}
     </ul>
 {% else %}

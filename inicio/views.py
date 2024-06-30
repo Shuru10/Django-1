@@ -7,7 +7,7 @@ from django.template import Template, Context, loader
 
 from inicio.models import Perro
 
-from inicio.forms import IngresarPacienteFormulario
+from inicio.forms import IngresarPacienteFormulario, BuscarPaciente, EditarPacienteFormulario
 
 import random
 
@@ -120,6 +120,39 @@ def ingresar_paciente(request):
 
 def pacientes(request):
     
-    pacientes = Perro.objects.all()
+    formulario = BuscarPaciente(request.GET)
+    if formulario.is_valid():
+        nombre = formulario.cleaned_data["nombre"]
+        pacientes = Perro.objects.filter(nombre__icontains=nombre)
     
-    return render(request, "inicio/pacientes.html",{"pacientes": pacientes})
+    #pacientes = Perro.objects.all()
+    
+    return render(request, "inicio/pacientes.html",{"pacientes": pacientes, "formulario": formulario})
+
+def eliminar_paciente(request, id):
+   perro = Perro.objects.get(id=id)
+   perro.delete()
+   
+   return redirect("pacientes")
+
+def editar_paciente(request, id):
+    perro = Perro.objects.get(id=id)
+    
+    formulario = EditarPacienteFormulario(initial={"nombre": perro.nombre, "raza": perro.raza, "edad": perro.edad})
+    
+    if request.method == "POST":
+        formulario = EditarPacienteFormulario(request.POST)
+        if formulario.is_valid():
+            info = formulario.cleaned_data
+            
+            perro.nombre = info["nombre"]
+            perro.raza = info["raza"]
+            perro.edad = info["edad"]
+            perro.save()
+            return redirect("pacientes")
+    
+    return render(request, "inicio/editar_paciente.html", {"formulario": formulario, "perro": perro})
+
+def ver_paciente(request, id):
+    perro = Perro.objects.get(id=id)
+    return render(request, "inicio/ver_paciente.html", {"perro": perro})
