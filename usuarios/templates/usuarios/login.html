@@ -1,22 +1,22 @@
 {% extends "base.html" %}
 
 {% block title_head %}
-Crear Accesorio
+Iniciar Sesion
 {% endblock title_head %}
 
 {% block h1_header %}
-Crear Accesorio
+Iniciar Sesion
 {% endblock h1_header %}
 
 
 {% block main %}
 
-<form action={% url "crear_accesorio" %} method="POST">
+<form action={% url "login" %} method="POST">
     {% csrf_token %}
 
-    {{form}}
+    {{formulario}}
 
-    <input type="submit" value="Crear">
+    <input type="submit" value="Iniciar Sesion">
 
 </form>
 

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+Eliminar Accesorio
+{% endblock title_head %}
+
+{% block h1_header %}
+Eliminar Accesorio
+{% endblock h1_header %}
+
+
+{% block main %}
+
+<form action={% url "eliminar_accesorio" accesorio.id %} method="POST">
+    {% csrf_token %}
+    <p>
+        Desea confirmar la eliminacion del accesorio {{accesorio}}?
+    </p>    
+
+    <input type="submit" value="Confirmar eliminacion">
+
+</form>
+
+{% endblock main %}
