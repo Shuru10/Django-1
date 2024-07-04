@@ -8,8 +8,9 @@ from django.template import Template, Context, loader
 from inicio.models import Perro
 
 from inicio.forms import IngresarPacienteFormulario, BuscarPaciente, EditarPacienteFormulario
-
 import random
+
+from django.contrib.auth.decorators import login_required
 
 def inicio(request):
     #v1
@@ -129,12 +130,14 @@ def pacientes(request):
     
     return render(request, "inicio/pacientes.html",{"pacientes": pacientes, "formulario": formulario})
 
+@login_required
 def eliminar_paciente(request, id):
    perro = Perro.objects.get(id=id)
    perro.delete()
    
    return redirect("pacientes")
 
+@login_required
 def editar_paciente(request, id):
     perro = Perro.objects.get(id=id)
     

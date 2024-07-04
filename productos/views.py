@@ -5,6 +5,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from .models import Accesorio
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 class Accesorios(ListView):
     model = Accesorio
@@ -17,7 +19,7 @@ class CrearAccesorio(CreateView):
     success_url = reverse_lazy("accesorios")
     fields = ["tipo", "talle", "color"]
     
-class EditarAccesorio(UpdateView):
+class EditarAccesorio(LoginRequiredMixin, UpdateView):
     model = Accesorio
     template_name = "accesorios/editar_accesorio.html"
     success_url = reverse_lazy("accesorios")
@@ -28,7 +30,7 @@ class VerAccesorio(DetailView):
     model = Accesorio
     template_name = "accesorios/ver_accesorio.html"
     
-class EliminarAccesorio(DeleteView):
+class EliminarAccesorio(LoginRequiredMixin, DeleteView):
     model = Accesorio
     template_name = "accesorios/eliminar_accesorio.html"
     success_url = reverse_lazy("accesorios")
