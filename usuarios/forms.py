@@ -14,7 +14,6 @@ class NuestroFormularioDeCreacion(UserCreationForm):
         help_texts ={key: "" for key in fields}
         
 class EditarPerfil(UserChangeForm):
-    password = None
     email = forms.EmailField()
     first_name = forms.CharField(label="Nombre")
     last_name = forms.CharField(label="Apellido")  
